@@ -13,8 +13,7 @@ def generate_content(img=None):
         response = model.generate_content([img])
         # analysis model
         model_ana = genai.GenerativeModel('gemini-1.5-pro-latest')
-        prompt_ana = f'''If This results "{response.text}" do not contain any medical report data, please respond with 'Please provide me with correct data.' ONLY and do not continue. 
-        Otherwise, give me the results in Arabic.'''
+        prompt_ana = f'''This results "{response.text}" of medical image as text give me the results in Arabic.'''
         response_ana = model_ana.generate_content([prompt_ana])
 
         return response_ana.text 
